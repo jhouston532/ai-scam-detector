@@ -16,7 +16,7 @@ Outline of Program
         - both reports are combined to synthesize a full report
 """
 import requests
-
+from bs4 import BeautifulSoup
 
 def get_html(url: str) -> str: 
     # Get the full html of a webpage 
@@ -41,3 +41,28 @@ def read_lines(filepath: str) -> list[str]:
         print(f"An error occurred: {e}")
         return []
 
+def strip_html_for_text(html: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+    
+    # Remove script and style tags entirely
+    for tag in soup(["script", "style"]):
+        tag.decompose()
+    
+    return soup.get_text(separator="\n", strip=True)
+
+def strip_html_for_code(html: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Remove style tags entirely
+    for tag in soup(["style"]):
+        tag.decompose()
+
+    # Remove all text nodes but keep tags and scripts
+    for element in soup.find_all(string=True):
+        if element.parent.name not in ["script"]:
+            element.replace_with("")
+
+    return str(soup)
+
+def send_to_code_counsel(stripped_code_only: str) -> str: 
+    
