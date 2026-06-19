@@ -5,7 +5,17 @@ from datetime import datetime
 
 def counsel(code: str, url: str) -> list[str]:
     
-    model_list: list[str] = []
+    model_list: list[str] = [
+        "qwen2.5-coder:14b",  # code pattern analysis
+        "qwen2.5:14b",        # reasoning about intent
+        "deepseek-r1:14b",    # deliberate reasoning step
+        "qwen2.5-coder:32b",  # code pattern specialist
+        "deepseek-r1:32b",    # deliberate reasoner  
+        "qwen2.5:32b",        # general reasoning / intent inference
+        "gemma3:27b",         # alternative architecture, good structured output
+        "mistral-small:22b",  # fast tiebreaker, mostly GPU
+    ]
+
     results: list[str] = []
     for model in model_list:
         COUNSEL_PROMPT: str = """
