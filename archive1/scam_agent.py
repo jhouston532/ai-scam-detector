@@ -26,13 +26,13 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import base64
 import csv
 import json
 import re
 import sys
 from collections import Counter
-from dataclasses import dataclass, asdict
-from datetime import datetime
+from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -547,26 +547,12 @@ def main():
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--panel", help="comma-separated model list for counsel mode")
     ap.add_argument("--outdir", default=".")
-    ap.add_argument("--run-id", default=None,
-                    help="subfolder under --outdir to write into. If omitted, a "
-                         "timestamped folder 'scan-YYYYmmdd-HHMMSS' is created. Pass "
-                         "one shared value across a batch to group every site in a "
-                         "single folder.")
-    ap.add_argument("--no-timestamp", action="store_true",
-                    help="write straight into --outdir with no timestamped subfolder")
     ap.add_argument("--dry-run", action="store_true",
                     help="skip Ollama; report from deterministic signals only")
     args = ap.parse_args()
 
-    base = Path(args.outdir)
-    if args.run_id:
-        outdir = base / args.run_id
-    elif args.no_timestamp:
-        outdir = base
-    else:
-        outdir = base / datetime.now().strftime("scan-%Y%m%d-%H%M%S")
+    outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
-    print(f"[out] writing to {outdir}", file=sys.stderr)
 
     print(f"[1/4] fetching {args.url}", file=sys.stderr)
     fetched = fetch(args.url)

@@ -1,0 +1,43 @@
+{
+  "url": "https://pornhub.com",
+  "final_url": "https://www.pornhub.com/",
+  "http_status": 200,
+  "redirect_chain": [
+    "https://pornhub.com/",
+    "https://www.pornhub.com/"
+  ],
+  "analysis": {
+    "summary": "Pornhub — 419 text blocks, 5 form(s).",
+    "category": "unknown (dry-run, no LLM)",
+    "verdict": "legitimate",
+    "risk_score": 0,
+    "reasoning": "Deterministic signals only; Ollama not called.",
+    "oddities": [
+      "password_form: Page has a password form (action: www.pornhub.com).",
+      "password_form: Page has a password form (action: www.pornhub.com).",
+      "many_third_party_scripts: 13 distinct third-party script domains."
+    ]
+  },
+  "signals": [
+    {
+      "code": "password_form",
+      "severity": "info",
+      "detail": "Page has a password form (action: www.pornhub.com)."
+    },
+    {
+      "code": "password_form",
+      "severity": "info",
+      "detail": "Page has a password form (action: www.pornhub.com)."
+    },
+    {
+      "code": "many_third_party_scripts",
+      "severity": "low",
+      "detail": "13 distinct third-party script domains."
+    }
+  ],
+  "csv_files": {
+    "text": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-141536\\www.pornhub.com.text.csv",
+    "html": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-141536\\www.pornhub.com.html.csv",
+    "scripts": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-141536\\www.pornhub.com.scripts.csv"
+  }
+}
