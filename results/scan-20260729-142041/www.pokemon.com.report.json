@@ -1,0 +1,32 @@
+{
+  "url": "https://pokemon.com",
+  "final_url": "http://www.pokemon.com/",
+  "http_status": 200,
+  "redirect_chain": [
+    "https://pokemon.com/",
+    "http://www.pokemon.com/"
+  ],
+  "analysis": {
+    "summary": "The site appears to be legitimate based on the provided information.",
+    "category": "legitimate",
+    "verdict": "legitimate",
+    "risk_score": 0,
+    "oddities": [
+      "No HTTPS detected, which is a medium risk signal.",
+      "no_https: Page not served over HTTPS."
+    ],
+    "reasoning": "The site redirects to the official Pokémon website (www.pokemon.com) and displays content related to browser issues rather than attempting to deceive users. The lack of HTTPS is noted as a potential security concern but does not indicate that the site is a scam."
+  },
+  "signals": [
+    {
+      "code": "no_https",
+      "severity": "medium",
+      "detail": "Page not served over HTTPS."
+    }
+  ],
+  "csv_files": {
+    "text": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-142041\\www.pokemon.com.text.csv",
+    "html": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-142041\\www.pokemon.com.html.csv",
+    "scripts": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\scan-20260729-142041\\www.pokemon.com.scripts.csv"
+  }
+}
