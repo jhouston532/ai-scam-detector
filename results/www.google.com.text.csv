@@ -1,0 +1,49 @@
+index,tag,depth,char_count,word_count,text
+0,title,3,6,1,Google
+1,a,5,5,1,About
+2,a,5,5,1,Store
+3,a,10,5,1,Gmail
+4,a,10,6,1,Images
+5,a,9,7,2,Sign in
+6,span,10,7,2,Sign in
+7,span,6,20,4,What's on your mind?
+8,li,14,12,2,Upload image
+9,button,15,12,2,Upload image
+10,span,16,12,2,Upload image
+11,li,14,11,2,Upload file
+12,button,15,11,2,Upload file
+13,span,16,11,2,Upload file
+14,li,14,22,4,🍌 Create images Canvas
+15,li,16,15,3,🍌 Create images
+16,button,17,15,3,🍌 Create images
+17,span,18,1,1,🍌
+18,span,18,13,2,Create images
+19,li,16,6,1,Canvas
+20,button,17,6,1,Canvas
+21,span,18,6,1,Canvas
+22,button,11,7,2,AI Mode
+23,span,13,7,2,AI Mode
+24,button,11,29,5,🍌 Create Remove Create Images
+25,span,12,1,1,🍌
+26,span,12,6,1,Create
+27,span,12,20,3,Remove Create Images
+28,button,11,20,3,Canvas Remove Canvas
+29,span,12,6,1,Canvas
+30,span,12,13,2,Remove Canvas
+31,li,10,15,3,See more Delete
+32,span,15,8,2,See more
+33,a,8,11,1,Advertising
+34,a,8,8,1,Business
+35,a,8,16,3,How Search works
+36,a,8,52,10,"Build, create, and do more with AI tools from Google"
+37,span,9,52,10,"Build, create, and do more with AI tools from Google"
+38,a,8,7,1,Privacy
+39,a,8,5,1,Terms
+40,span,8,117,18,Settings Search settings Advanced search Your data in Search Search history Search help Send feedback Dark theme: Off
+41,span,9,117,18,Settings Search settings Advanced search Your data in Search Search history Search help Send feedback Dark theme: Off
+42,a,15,15,2,Search settings
+43,a,15,15,2,Advanced search
+44,a,15,19,4,Your data in Search
+45,a,15,14,2,Search history
+46,a,15,11,2,Search help
+47,span,15,13,2,Send feedback

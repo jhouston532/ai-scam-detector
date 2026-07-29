@@ -1,0 +1,33 @@
+{
+  "url": "https://pokemon.com",
+  "final_url": "https://www.pokemon.com/us",
+  "http_status": 200,
+  "redirect_chain": [
+    "https://pokemon.com/",
+    "http://www.pokemon.com/",
+    "https://www.pokemon.com/",
+    "https://www.pokemon.com/us"
+  ],
+  "analysis": {
+    "summary": "The Official Pokémon Website | Pokemon.com — 124 text blocks, 1 form(s).",
+    "category": "unknown (dry-run, no LLM)",
+    "verdict": "legitimate",
+    "risk_score": 0,
+    "reasoning": "Deterministic signals only; Ollama not called.",
+    "oddities": [
+      "many_hidden_elements: 11 elements hidden via inline style."
+    ]
+  },
+  "signals": [
+    {
+      "code": "many_hidden_elements",
+      "severity": "low",
+      "detail": "11 elements hidden via inline style."
+    }
+  ],
+  "csv_files": {
+    "text": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\www.pokemon.com.text.csv",
+    "html": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\www.pokemon.com.html.csv",
+    "scripts": "C:\\Users\\nahta\\Github\\ai-scam-detector\\results\\www.pokemon.com.scripts.csv"
+  }
+}

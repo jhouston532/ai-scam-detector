@@ -1,0 +1,125 @@
+index,tag,depth,char_count,word_count,text
+0,title,3,42,6,The Official Pokémon Website | Pokemon.com
+1,li,7,6,2,Log In
+2,a,8,6,2,Log In
+3,a,6,110,17,Dive into Pokémon Pokopia Expansion Pass—Part 1: Bubbly Basin Rebuild a watery wonderland in Pokémon Pokopia .
+4,h3,10,61,9,Dive into Pokémon Pokopia Expansion Pass—Part 1: Bubbly Basin
+5,p,10,48,8,Rebuild a watery wonderland in Pokémon Pokopia .
+6,a,6,37,5,Begin Your Pokécology Education Today
+7,h3,9,37,5,Begin Your Pokécology Education Today
+8,a,6,41,4,Champion’s Spotlight: Yoshiyuki Yamaguchi
+9,h3,9,41,4,Champion’s Spotlight: Yoshiyuki Yamaguchi
+10,a,6,30,5,Meet Feebas in Pokémon Pokopia
+11,h3,9,30,5,Meet Feebas in Pokémon Pokopia
+12,a,6,37,6,The Art of Mega Evolution—Pitch Black
+13,h3,10,37,6,The Art of Mega Evolution—Pitch Black
+14,a,6,37,7,Take to the Skies with Pokémon Center
+15,h3,9,37,7,Take to the Skies with Pokémon Center
+16,h3,7,16,2,Featured Pokémon
+17,li,7,64,12,89 Muk 89 Type Poison Abilities Stench / Sticky Hold Muk Profile
+18,span,10,2,1,89
+19,span,11,6,1,Poison
+20,span,11,6,1,Stench
+21,span,11,11,2,Sticky Hold
+22,a,8,11,2,Muk Profile
+23,span,9,11,2,Muk Profile
+24,li,7,67,10,134 Vaporeon 134 Type Water Abilities Water Absorb Vaporeon Profile
+25,span,10,3,1,134
+26,span,11,5,1,Water
+27,span,11,12,2,Water Absorb
+28,a,8,16,2,Vaporeon Profile
+29,span,9,16,2,Vaporeon Profile
+30,li,7,61,9,153 Bayleef 153 Type Grass Abilities Overgrow Bayleef Profile
+31,span,10,3,1,153
+32,span,11,5,1,Grass
+33,span,11,8,1,Overgrow
+34,a,8,15,2,Bayleef Profile
+35,span,9,15,2,Bayleef Profile
+36,li,7,87,13,523 Zebstrika 523 Type Electric Abilities Lightning Rod / Motor Drive Zebstrika Profile
+37,span,10,3,1,523
+38,span,11,8,1,Electric
+39,span,11,13,2,Lightning Rod
+40,span,11,11,2,Motor Drive
+41,a,8,17,2,Zebstrika Profile
+42,span,9,17,2,Zebstrika Profile
+43,li,7,72,11,96 Drowzee 96 Type Psychic Abilities Insomnia / Forewarn Drowzee Profile
+44,span,10,2,1,96
+45,span,11,7,1,Psychic
+46,span,11,8,1,Insomnia
+47,span,11,8,1,Forewarn
+48,a,8,15,2,Drowzee Profile
+49,span,9,15,2,Drowzee Profile
+50,li,7,82,13,275 Shiftry 275 Type Grass Dark Abilities Chlorophyll / Early Bird Shiftry Profile
+51,span,10,3,1,275
+52,span,11,5,1,Grass
+53,span,11,4,1,Dark
+54,span,11,11,1,Chlorophyll
+55,span,11,10,2,Early Bird
+56,a,8,15,2,Shiftry Profile
+57,span,9,15,2,Shiftry Profile
+58,li,7,60,9,729 Brionne 729 Type Water Abilities Torrent Brionne Profile
+59,span,10,3,1,729
+60,span,11,5,1,Water
+61,span,11,7,1,Torrent
+62,a,8,15,2,Brionne Profile
+63,span,9,15,2,Brionne Profile
+64,li,7,66,10,408 Cranidos 408 Type Rock Abilities Mold Breaker Cranidos Profile
+65,span,10,3,1,408
+66,span,11,4,1,Rock
+67,span,11,12,2,Mold Breaker
+68,a,8,16,2,Cranidos Profile
+69,span,9,16,2,Cranidos Profile
+70,li,7,86,14,17 Pidgeotto 17 Type Normal Flying Abilities Keen Eye / Tangled Feet Pidgeotto Profile
+71,span,10,2,1,17
+72,span,11,6,1,Normal
+73,span,11,6,1,Flying
+74,span,11,8,2,Keen Eye
+75,span,11,12,2,Tangled Feet
+76,a,8,17,2,Pidgeotto Profile
+77,span,9,17,2,Pidgeotto Profile
+78,li,7,87,13,880 Dracozolt 880 Type Electric Dragon Abilities Volt Absorb / Hustle Dracozolt Profile
+79,span,10,3,1,880
+80,span,11,8,1,Electric
+81,span,11,6,1,Dragon
+82,span,11,11,2,Volt Absorb
+83,span,11,6,1,Hustle
+84,a,8,17,2,Dracozolt Profile
+85,span,9,17,2,Dracozolt Profile
+86,a,8,20,3,Explore More Pokémon
+87,h2,7,20,4,What's New This Week
+88,a,6,213,36,"Ellis Longhurst Shares Her Top Five Cards from Mega Evolution—Pitch Black Find out why this Pokémon TCG expert thinks Mega Excadrill ex, Hide ’n’ Sneak, and even Slowbro will make an impact on the Standard format."
+89,h3,9,73,11,Ellis Longhurst Shares Her Top Five Cards from Mega Evolution—Pitch Black
+90,p,9,139,25,"Find out why this Pokémon TCG expert thinks Mega Excadrill ex, Hide ’n’ Sneak, and even Slowbro will make an impact on the Standard format."
+91,a,6,117,21,Look Back and Appreciate Mewtwo in the Pokémon TCG The Genetic Pokémon has been getting fans psyched up for 30 years.
+92,h3,9,50,9,Look Back and Appreciate Mewtwo in the Pokémon TCG
+93,p,9,66,12,The Genetic Pokémon has been getting fans psyched up for 30 years.
+94,a,6,126,21,Mega Rayquaza Takes Flight in Ruler of the Skies Celebrate the Sky High Pokémon in this upcoming Pokémon TCG Pocket expansion.
+95,h3,9,48,9,Mega Rayquaza Takes Flight in Ruler of the Skies
+96,p,9,77,12,Celebrate the Sky High Pokémon in this upcoming Pokémon TCG Pocket expansion.
+97,h2,7,20,4,What's New This Week
+98,a,6,174,25,Pokémon Champions Regulation M‑B Double Battles Overview New Mega-Evolved Pokémon have changed the landscape of the latest regulation. Which strategies are rising to the top?
+99,h3,9,56,7,Pokémon Champions Regulation M‑B Double Battles Overview
+100,p,9,117,18,New Mega-Evolved Pokémon have changed the landscape of the latest regulation. Which strategies are rising to the top?
+101,a,6,180,25,Show Your Favorite: International Championships Style We took photos of Trainers just like you battling alongside their plush at the 2026 North America International Championships!
+102,h3,9,53,6,Show Your Favorite: International Championships Style
+103,p,9,126,19,We took photos of Trainers just like you battling alongside their plush at the 2026 North America International Championships!
+104,a,6,123,21,Pokémon GO Celebrated Ten Years of History in NYC We attended an immersive anniversary event in the middle of Times Square.
+105,h3,9,49,9,Pokémon GO Celebrated Ten Years of History in NYC
+106,p,9,73,12,We attended an immersive anniversary event in the middle of Times Square.
+107,a,6,55,10,View All News Keep up with all the latest developments!
+108,h2,9,13,3,View All News
+109,p,9,41,7,Keep up with all the latest developments!
+110,span,4,11,3,Back to Top
+111,p,5,285,41,The Pokémon Company International is not responsible for the content of any linked website that is not operated by The Pokémon Company International. Please note that these websites' privacy policies and security practices may differ from The Pokémon Company International's standards.
+112,a,6,8,1,Continue
+113,a,6,6,1,Cancel
+114,a,6,8,1,Continue
+115,a,6,6,1,Cancel
+116,p,5,115,18,Pokemon.com administrators have been notified and will review the screen name for compliance with the Terms of Use.
+117,a,6,5,1,Close
+118,p,5,112,17,"Your request could not be completed. Please try again. If the problem persists, please contact Customer Support."
+119,a,6,5,1,Close
+120,span,4,55,9,You've been awarded 0 Token(s) for watching Pokémon TV!
+121,p,5,55,9,You've been awarded 0 Token(s) for watching Pokémon TV!
+122,span,6,1,1,0
+123,a,5,5,1,Close

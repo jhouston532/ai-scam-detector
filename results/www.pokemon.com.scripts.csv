@@ -1,0 +1,14 @@
+index,kind,src_or_domain,length,obfuscation_score,flags
+0,external,https://www.pokemon.com/d-Headiction-our-How-and-ther-Lord-That-manly-sp,0,0,
+1,inline,,338,0,
+2,external,https://assets.pokemon.com/static2/_ui/js/vendor/modernizr.custom.js,0,0,
+3,external,https://www.recaptcha.net/recaptcha/enterprise.js?render=6Lc4P0MoAAAAAAhyCYBhoVfHZUF3HMvFdXSRZ-kO&hl=en,0,0,third_party
+4,inline,,212,0,
+5,inline,,4971,0,
+6,external,https://www.pokemon.com/static-assets/app/static3/pcom-next-footer/pcom-next-footer.js?v=r1.1.5,0,0,
+7,inline,,57,0,
+8,inline,,59,0,
+9,inline,,212,0,
+10,external,https://assets.pokemon.com/static2/_ui/js/vendor/require.js,0,0,
+11,inline,,71,0,
+12,external,https://www.pokemon.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=1742007295,0,0,
