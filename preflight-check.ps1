@@ -43,7 +43,12 @@ param(
     [switch]$WindowsPython
 )
 
-$ErrorActionPreference = "Stop"
+# Native commands (wsl, python, scam_agent.py) legitimately write progress and
+# version text to stderr, so their stderr must NOT be treated as fatal. Keep the
+# default 'Continue' and judge native commands by their OUTPUT / exit code; the
+# one cmdlet we want to catch (Invoke-RestMethod) gets an explicit -ErrorAction.
+$ErrorActionPreference = "Continue"
+$PSNativeCommandUseErrorActionPreference = $false   # no-op on Windows PowerShell 5.1
 
 # --------------------------------------------------------------------------- #
 # Helpers
@@ -60,9 +65,9 @@ function Fail ($m) { Write-Fail $m; $script:PreflightFailed = $true }
 
 # Run python (in WSL or on Windows) with the given argument array.
 function Invoke-Python {
-    param([string[]]$Args)
-    if ($WindowsPython) { & python @Args }
-    else                { & wsl python3 @Args }
+    param([string[]]$PyArgs)
+    if ($WindowsPython) { & python @PyArgs }
+    else                { & wsl python3 @PyArgs }
 }
 
 # Convert a Windows path to a WSL path (/mnt/c/...) unless running Windows python.
@@ -100,10 +105,13 @@ if (-not (Test-Path -LiteralPath $ScriptPath -PathType Leaf)) {
 Write-Step "python runtime ($runtimeLabel)"
 try {
     $pyVer = (Invoke-Python @("--version") 2>&1 | Out-String).Trim()
-    if ($LASTEXITCODE -ne 0 -or -not $pyVer) { throw "no output" }
-    Write-Ok $pyVer
 } catch {
-    Fail "could not run python. Is WSL installed / python3 on PATH? ($_)"
+    $pyVer = ""
+}
+if ($pyVer -match 'Python \d') {
+    Write-Ok $pyVer
+} else {
+    Fail "could not run python. Is WSL installed / python3 on PATH?"
 }
 
 # 4. Python deps
@@ -124,7 +132,7 @@ if ($DryRun) {
     Write-Step "Ollama reachable at $OllamaUrl"
     $tags = $null
     try {
-        $resp = Invoke-RestMethod -Uri "$OllamaUrl/api/tags" -TimeoutSec 5
+        $resp = Invoke-RestMethod -Uri "$OllamaUrl/api/tags" -TimeoutSec 5 -ErrorAction Stop
         $tags = @($resp.models.name)
         Write-Ok "Ollama up ($($tags.Count) model(s) installed)"
     } catch {
