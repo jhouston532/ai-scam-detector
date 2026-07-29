@@ -85,6 +85,12 @@ Write-Head "PRE-FLIGHT"
 $runtimeLabel = if ($WindowsPython) { "Windows python" } else { "WSL python3" }
 Write-Host "  runtime: $runtimeLabel" -ForegroundColor DarkGray
 
+# Common footgun: a Windows venv is active, but the tool defaults to WSL python3
+# (a different interpreter that can't see the venv's packages).
+if ($env:VIRTUAL_ENV -and -not $WindowsPython) {
+    Write-Warn "Windows venv active ($env:VIRTUAL_ENV) but running under WSL python3, which won't see its packages. Add -WindowsPython to use the venv."
+}
+
 # 1. Input file
 Write-Step "input file: $InputFile"
 if (-not (Test-Path -LiteralPath $InputFile -PathType Leaf)) {
@@ -120,8 +126,10 @@ if (-not $script:PreflightFailed) {
     Invoke-Python @("-c", "import requests, bs4") 2>&1 | Out-Null
     if ($LASTEXITCODE -eq 0) {
         Write-Ok "requests + beautifulsoup4 importable"
+    } elseif ($WindowsPython) {
+        Fail "missing deps in the Windows python env. Run:  pip install -r requirements.txt"
     } else {
-        Fail "missing deps. Run:  pip install -r requirements.txt"
+        Fail "missing deps in the WSL python3 env. Either 'wsl pip3 install -r requirements.txt', or re-run with -WindowsPython to use your Windows venv."
     }
 }
 
