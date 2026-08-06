@@ -1,9 +1,0 @@
-requests>=2.31
-beautifulsoup4>=4.12
-
-# optional: airtight eTLD+1 parsing (replaces the crude _registrable helper)
-tldextract>=5.1
-
-# optional: JS-rendered page fetching (swap into the fetch() layer)
-# requires playwright install chromium
-playwright>=1.44
