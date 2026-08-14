@@ -5,6 +5,7 @@ def splitter(urls: dict[str, bool]) -> tuple[dict[str, bool], dict[str, bool]]:
     """
     good_url: dict[str, bool] = {}
     bad_url: dict[str, bool] = {}
+    
     for url, ok in urls.items():
         if ok:
             good_url[url] = ok
