@@ -1,13 +1,13 @@
-
-def splitter(urls: dict[str, bool]) -> list[dict[str, bool]]: 
-
-    good_url: list[dict[str, bool]] = []
-    bad_url: list[dict[str, bool]] = []
-
-    for url, ok in urls: 
-        if ok == True: 
-            good_url.append[{url, ok}]
-        else: 
-            bad_url.append[{url, ok}]
-
-    return [good_url, bad]
+def splitter(urls: dict[str, bool]) -> tuple[dict[str, bool], dict[str, bool]]:
+    """
+    Splits a {url: responded_ok} dict into two dicts:
+    the first holds the URLs that responded OK, the second holds the rest.
+    """
+    good_url: dict[str, bool] = {}
+    bad_url: dict[str, bool] = {}
+    for url, ok in urls.items():
+        if ok:
+            good_url[url] = ok
+        else:
+            bad_url[url] = ok
+    return good_url, bad_url
