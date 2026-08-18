@@ -1,5 +1,7 @@
-import requests 
 import csv
+
+import requests
+
 
 def ping(url: str, timeout: int) -> bool: 
     """
@@ -41,6 +43,33 @@ def read_from_csv_file(filepath: str) -> list[str]:
                 urls.append(row["url"])
 
     return urls
+
+def grab_html(url: str, timeout: int) -> str | None: 
+
+    """
+        Ping a website
+        if it returns, get its html and return as a string 
+        if there are any problems, return None 
+    """
+
+    if ping(url, timeout): 
+        try: 
+            resp = requests.get(url, timeout)
+        except requests.RequestException:
+            return None
+
+        if not resp.ok: 
+            return None
+
+        content_type = resp.headers.get("Content-Type", "")
+
+        if "html" not in content_type.lower():
+            return None  # PDF, image, JSON, etc. — not a page we want
+
+        return resp.text
+    else: 
+        return None
+
 
 def ping_main(mode: str, target: str, timeout: int = 15) -> dict[str, bool]:
     """
