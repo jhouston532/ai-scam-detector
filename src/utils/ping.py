@@ -14,7 +14,7 @@ def ping(url: str, timeout: int) -> bool:
         response = requests.get(url, timeout=timeout)
         return response.status_code == requests.codes.ok  # 200
     except requests.RequestException:
-        return False
+        return False    
 
 
 def ping_urls(urls: list[str], timeout: int) -> dict[str, bool]:
@@ -54,7 +54,7 @@ def grab_html(url: str, timeout: int) -> str | None:
 
     if ping(url, timeout): 
         try: 
-            resp = requests.get(url, timeout)
+            resp = requests.get(url, timeout=timeout)
         except requests.RequestException:
             return None
 
