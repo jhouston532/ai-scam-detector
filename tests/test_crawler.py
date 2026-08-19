@@ -224,18 +224,23 @@ def _make_fetcher(pages):
 
 
 class TestCrawl:
-    def test_returns_empty_set_for_invalid_seed(self):
+    # crawl() now returns {normalized_url: html} for every same-domain page it
+    # fetched successfully. The fake fetcher is keyed by normalized url and
+    # returns that page's HTML, so for a fully-reachable site the returned dict
+    # equals the `pages` fixture exactly.
+
+    def test_returns_empty_dict_for_invalid_seed(self):
         # No registrable domain -> nothing to crawl, fetch never called.
         with patch("analysis.crawler.fetch_page") as mock_fetch:
-            assert crawl("http://localhost/") == set()
+            assert crawl("http://localhost/") == {}
             mock_fetch.assert_not_called()
 
-    def test_empty_string_seed_returns_empty_set(self):
+    def test_empty_string_seed_returns_empty_dict(self):
         with patch("analysis.crawler.fetch_page") as mock_fetch:
-            assert crawl("") == set()
+            assert crawl("") == {}
             mock_fetch.assert_not_called()
 
-    def test_visits_all_same_domain_pages_once(self):
+    def test_returns_html_keyed_by_normalized_url(self):
         pages = {
             "https://site.com/": (
                 '<a href="/about">about</a>'
@@ -255,18 +260,15 @@ class TestCrawl:
         fetcher, calls = _make_fetcher(pages)
 
         with patch("analysis.crawler.fetch_page", side_effect=fetcher):
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {
-            "https://site.com/",
-            "https://site.com/about",
-            "https://site.com/contact",
-            "https://site.com/team",
-        }
-        # Each page fetched exactly once (dedup + visited-set working).
+        # Every same-domain page reachable -> result maps each normalized URL
+        # to exactly the HTML that was fetched for it.
+        assert result == pages
+        # Each page fetched exactly once (dedup + seen-set working).
         assert len(calls) == len(set(calls))
 
-    def test_excludes_off_domain_links(self):
+    def test_excludes_off_domain_pages_from_result(self):
         pages = {
             "https://site.com/": '<a href="https://ext.com/page">ext</a>',
             "https://ext.com/page": '<a href="/deep">deep</a>',  # must never be fetched
@@ -274,9 +276,10 @@ class TestCrawl:
         fetcher, calls = _make_fetcher(pages)
 
         with patch("analysis.crawler.fetch_page", side_effect=fetcher):
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {"https://site.com/"}
+        assert result == {"https://site.com/": pages["https://site.com/"]}
+        assert "https://ext.com/page" not in result
         assert "https://ext.com/page" not in calls
 
     def test_follows_same_registrable_domain_across_subdomains(self):
@@ -287,20 +290,38 @@ class TestCrawl:
         fetcher, _ = _make_fetcher(pages)
 
         with patch("analysis.crawler.fetch_page", side_effect=fetcher):
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {
-            "https://site.com/",
-            "https://blog.site.com/post",
-        }
+        assert result == pages  # both pages fetched, HTML preserved
 
-    def test_failed_fetch_page_still_counts_as_visited(self):
-        # fetch_page returning None marks the URL visited but follows no links.
+    def test_failed_fetch_is_omitted_from_result(self):
+        # NEW CONTRACT: a page whose fetch returns None is visited (so it is
+        # not retried) but has no body, so it does not appear in the result.
         with patch("analysis.crawler.fetch_page", return_value=None) as mock_fetch:
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {"https://site.com/"}
+        assert result == {}
         mock_fetch.assert_called_once()
+
+    def test_partial_failure_keeps_the_good_pages(self):
+        # Home fetches fine and links to two children; one child 500s (None).
+        # The good pages survive; the failed one is dropped, not fatal.
+        pages = {
+            "https://site.com/": '<a href="/ok">ok</a><a href="/dead">dead</a>',
+            "https://site.com/ok": "<p>fine</p>",
+            # "https://site.com/dead" intentionally absent -> fetcher returns None
+        }
+        fetcher, calls = _make_fetcher(pages)
+
+        with patch("analysis.crawler.fetch_page", side_effect=fetcher):
+            result = crawl("https://site.com/")
+
+        assert result == {
+            "https://site.com/": pages["https://site.com/"],
+            "https://site.com/ok": pages["https://site.com/ok"],
+        }
+        assert "https://site.com/dead" in calls        # it was attempted
+        assert "https://site.com/dead" not in result   # but produced no body
 
     def test_terminates_on_cycles(self):
         # Two pages linking to each other: must not loop forever.
@@ -311,14 +332,14 @@ class TestCrawl:
         fetcher, calls = _make_fetcher(pages)
 
         with patch("analysis.crawler.fetch_page", side_effect=fetcher):
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {"https://site.com/", "https://site.com/a"}
+        assert result == pages
         assert len(calls) == 2  # each fetched once despite the cycle
 
     def test_equivalent_urls_collapse_via_normalization(self):
         # Home links to the same page three ways (trailing slash, fragment,
-        # mixed case host); all normalize to one and get fetched once.
+        # plain); all normalize to one key and get fetched once.
         pages = {
             "https://site.com/": (
                 '<a href="/team/">slash</a>'
@@ -330,7 +351,7 @@ class TestCrawl:
         fetcher, calls = _make_fetcher(pages)
 
         with patch("analysis.crawler.fetch_page", side_effect=fetcher):
-            visited = crawl("https://site.com/")
+            result = crawl("https://site.com/")
 
-        assert visited == {"https://site.com/", "https://site.com/team"}
+        assert result == pages
         assert calls.count("https://site.com/team") == 1
