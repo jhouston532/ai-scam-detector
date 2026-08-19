@@ -1,1 +1,5 @@
 tldextract
+pytest
+mypy
+requests
+tldextract
