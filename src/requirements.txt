@@ -3,3 +3,4 @@ pytest
 mypy
 requests
 tldextract
+beautifulsoup4 
